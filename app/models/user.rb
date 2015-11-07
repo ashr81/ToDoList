@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-	has_one :profile #, dependent: :delete
-	has_many :todo_lists #,dependent: :delete_all
-	has_many :todo_items, through: :todo_lists, source: :todo_items
+	has_one :profile , dependent: :destroy
+	has_many :todo_lists ,dependent: :destroy
+	has_many :todo_items, through: :todo_lists, source: :todo_items #,dependent: :delete_all
 	validates :username , presence: true
 end
