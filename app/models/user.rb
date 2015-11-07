@@ -3,4 +3,8 @@ class User < ActiveRecord::Base
 	has_many :todo_lists ,dependent: :destroy
 	has_many :todo_items, through: :todo_lists, source: :todo_items #,dependent: :delete_all
 	validates :username , presence: true
+
+	def get_completed_count(user)
+		return user.todo_items.where(completed: true).count
+	end
 end
